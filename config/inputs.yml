@@ -1,0 +1,8 @@
+neo4j_server:
+  server_uri: bolt://localhost:7687/
+  host: localhost
+  port: 7687
+  username: "neo4j"
+  password: ""
+neo4j_queries:
+  Order Information : MATCH (o:Order) return o.order_id  limit 20
