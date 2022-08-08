@@ -40,9 +40,9 @@ class app_streamlit:
         if 'neo_server' not in st.session_state:
             st.session_state.neo_server = ''
         if 'port' not in st.session_state:
-            st.session_state.port = ''
+            st.session_state.port = '7687'
         if 'username' not in st.session_state:
-            st.session_state.username = ''
+            st.session_state.username = 'neo4j'
         if 'password' not in st.session_state:
             st.session_state.password = ''
         if 'neo_status' not in st.session_state:
@@ -91,10 +91,10 @@ class app_streamlit:
         self.title_setup(title='Neo4j Server Connection')
         left,right =st.columns(2)
         form = left.form("template_form")
-        st.session_state.neo_server = form.text_input("Neo4j URL",value='bolt://localhost:7687/')
-        st.session_state.port = form.text_input("Neo4j Port",value='7687')
-        st.session_state.username = form.text_input('User Name',value='neo4j')
-        st.session_state.password = form.text_input('Password',type='password')
+        st.session_state.neo_server = form.text_input("Neo4j URL",value=st.session_state.neo_server)
+        st.session_state.port = form.text_input("Neo4j Port",value=st.session_state.port)
+        st.session_state.username = form.text_input('User Name',value=st.session_state.username)
+        st.session_state.password = form.text_input('Password',type='password',value=st.session_state.password)
         submit = form.form_submit_button("Connect")
         neo_driver = neo4j_driver.neo4j_class(
             {'neo4j_server':{
