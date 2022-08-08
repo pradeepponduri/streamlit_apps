@@ -1,10 +1,8 @@
 name: streamlit
 dependencies:
-  - python=3.8
-  - numpy
+  - python
   - pandas
   - neo4j-python-driver
   - pyyaml
-  - ipykernel
   - pip:
     - streamlit
