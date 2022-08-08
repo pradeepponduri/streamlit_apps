@@ -31,7 +31,8 @@ def yaml_loader(filepath):
 class app_streamlit:
     def __init__(self,inp_data=None):
         self.inp_data = inp_data
-        self.queries = self.inp_data["neo4j_queries"]
+        #self.queries = self.inp_data["neo4j_queries"]
+        self.queries = None
         self.page_setup()
         self.hide_markdowns()
         self.sidebar_setup()
@@ -58,18 +59,18 @@ class app_streamlit:
             </style>
             """
         st.markdown(hide_streamlit_style, unsafe_allow_html=True)        
-    def get_query_names(self):
-        return self.queries.keys()
+    # def get_query_names(self):
+    #     return self.queries.keys()
     def get_neo4j_result(self,query):
         neo_driver = neo4j_driver.neo4j_class(self.inp_data)
         result = neo_driver.execute_query(query,True)
         return result
-    def get_dataframe(self,key):
-        print(key)
-        query = self.queries[key]
-        print('Here is the query',query)
-        df = self.get_neo4j_result(query)
-        return df
+    # def get_dataframe(self,key):
+    #     print(key)
+    #     query = self.queries[key]
+    #     print('Here is the query',query)
+    #     df = self.get_neo4j_result(query)
+    #     return df
     def main(self):
         #tab1, tab2, tab3 = st.tabs(["Data Check", "Graph Stats", "Custome Query"])
         keys = self.get_query_names()
@@ -170,8 +171,8 @@ class app_streamlit:
         
         
 if __name__=="__main__":
-    inp_data = yaml_loader(sys.argv[1])
-    app = app_streamlit(inp_data=inp_data)
+    #inp_data = yaml_loader(sys.argv[1])
+    app = app_streamlit()
     if app.option=='Graph Description':
         app.graph_description()
         
