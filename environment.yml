@@ -2,7 +2,7 @@ name: streamlit
 dependencies:
   - python
   - pandas
-  - neo4j-python-driver
   - pyyaml
   - pip:
     - streamlit
+    - neo4j
