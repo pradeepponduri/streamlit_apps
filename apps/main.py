@@ -18,7 +18,12 @@ import streamlit as st
 from apps_drivers import neo4j_driver
 #Functions
 
+
 def yaml_loader(filepath):
+    """ This function loads the yaml file and stores the yaml configuration settings into a variable
+    Input: filepath
+    Output: data of type dictionary
+    """
     with open(filepath, "r") as file_descriptor:
         data = yaml.safe_load(file_descriptor)
     return data
